@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 操作方法
+        {
+            // 增：push(),splice(),concat(),[...]点语法,unshift();它们都可以同时添加多个元素
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array.push('a', 'a');
+                console.log(array);
+            }; {
+                // 接收多个参数，前面两个分别是（位置，数量），后面的参数可以是添加的数组元素
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array.splice(10, 0, 'b', 'b', 'b', 'b');
+                console.log(array);
+            }; {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                // 这个方法不会改变原数组,所以需要找一个变量来接收它的返回值
+                array = array.concat('c', 'c');
+                console.log(array);
+            }; {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = [...array, 'd', 'd'];
+                console.log(array);
+            }; {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array.unshift('e', 'e');
+                console.log(array);
+            }
+            // 删:shift(),pop(),splice(),slice()
+            {
+                // 删除第一个元素
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array.shift();
+                console.log(array);
+            };
+
+            {
+                //删除最后一个元素，返回值为删除的元素
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array.pop();
+                console.log(array);
+            };
+
+            {
+                // 可以实现批量删除，第二个参数可以是一个表达式。
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array.splice(0, array.length * 0 + 2);
+                console.log(array);
+            }; {
+                // 注意这个方法不会改变原数组。参数：位置，位置
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = array.slice(2, 3)
+                console.log(array);
+            };
+            // 改:一般使用的的是splice()
+            // 查：indexOf(),includes(),find();
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                // indexOf()找到了就返回1，没找到就返回-1。不会隐式转换。1与‘1’是不同的。
+                console.log(array.indexOf('1'));
+                console.log(array.indexOf(1));
+                console.log(array.indexOf('10'))
+                    // includes()
+                console.log(array.includes('1'));
+                console.log(array.includes(1));
+                // find()
+                {
+                    const people = [{
+                        name: "Matt",
+                        age: 27
+                    }, {
+                        name: "Nicholas",
+                        age: 29
+                    }];
+                    console.log(people.find(ele => people.name = 'Nicholas'))
+                }
+                let a = array.find((ele) => ele % 3 == 0); //这中箭头函数的写法有返回值
+                let b = array.find((ele) => {
+                    ele % 3 == 0
+                });
+                console.log(b);
+                console.log(a);
+            }
+
+        };
+        // 排序方法：reverse()反转函数，sort()通过函数判断排序方法（从小到大，和从大到小）
+        {
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                console.log(array.reverse());
+                console.log(array.sort(paixu))
+
+                function paixu(a, b) {
+                    return b - a;
+                }
+            }
+            // 转换方法：
+            // 数组转字符串：join();
+            // 字符串转数组：split();
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = array.join(',');
+                console.log(array);
+                array = array.split(',');
+                console.log(array);
+            }
+        }
+        // 迭代方法:
+        {
+            // some():
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = array.some((ele) => {
+                    ele >= 10
+                })
+                console.log(array); //false
+            }
+            // every():
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = array.every((ele) => {
+                    ele * 2 >= 10;
+                });
+                console.log(array); //false
+            }
+            //forEach():
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                let a = [];
+                array.forEach((item) => {
+                    a.push(item % 3)
+                });
+                console.log(a);
+            }
+            // fitter():返回true的值，并组成数组。
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = array.filter((item) => {
+                    item == 0
+                });
+                console.log(array);
+            };
+            // map():返回值由每次调用的结果构成。
+            {
+                let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+                array = array.map((item, index, array) => {
+                    // console.log(item, index, array);
+                    return item * 3
+                });
+                console.log(array);
+            }
+        }
+        // 数组去重：
+        // 利用循环，外层循环元素，内层循环比较。
+        {
+            Array.prototype.distinct = function() {
+                var arr = this,
+                    result = [],
+                    i, j,
+                    len = arr.length;
+                for (i = 0; i < len; i++) {
+                    for (j = i + 1; j < len; j++) {
+                        if (arr[i] === arr[j]) {
+                            j = ++i; //神来之笔
+                        }
+                    }
+                    console.log(i);
+                    result.push(arr[i]);
+                }
+                return result;
+            };
+            var arr = [1, 1, 2, 2, 1, 1, 1, 1, 1];
+            console.log(arr.distinct());
+        }
+        // 
+        {
+            Array.prototype.distinct = function() {
+                var arr = this,
+                    i,
+                    j,
+                    len = arr.length;
+                for (i = 0; i < len; i++) {
+                    for (j = i + 1; j < len; j++) {
+                        if (arr[i] === arr[j]) {
+                            arr.splice(j, 1);
+                            len--; //长度需要减一
+                            j--; //下标也需要改变
+                        }
+                    }
+                }
+                return arr;
+            };
+            var a = [1, 2, 2, 3, 3, 4, 5];
+            console.log(a.distinct());
+        }
+        //
+        {
+            Array.prototype.distinct = function() {
+                var arr = this,
+                    i,
+                    obj = {},
+                    result = [],
+                    len = arr.length;
+                for (i = 0; i < arr.length; i++) {
+                    if (!obj[arr[i]]) {
+                        obj[arr[i]] = 1;
+                        result.push(arr[i]);
+                    }
+                }
+            }
+        }
+        // 利用对象名的不可重复性。
+        {
+            Array.prototype.distinct = function() {
+                var arr = this,
+                    i,
+                    obj = {},
+                    result = [],
+                    len = arr.length;
+                for (i = 0; i < len; i++) {
+                    if (!obj[arr[i]]) { //如果能查到说明该字符已经存在，就排除了
+                        obj[arr[i]] = 1;
+                        result.push()
+                    }
+                }
+                return result;
+            }
+            let arr = [11, 22, 33, 44, 55, 33, 22, 11];
+        }
+        //先进行排序，然后将比较相邻的两个是否相同，再利用splice进行删除
+        {
+            Array.prototype.distinct = function() {
+                var arr = this,
+                    i,
+                    obj = {},
+                    result = [],
+                    len = arr.length;
+                arr.sort((a, b) => a - b)
+
+                function loop(index) {
+                    if (index >= 1) {
+                        if (arr[index] === arr[index - 1]) {
+                            arr.splice(index, 1);
+                        }
+                        loop(index - 1);
+                    }
+                }
+                loop(len - 1);
+                return arr;
+            }
+            let arr = [11, 22, 33, 33, 22, 11, 33];
+            let b = arr.distinct();
+            console.log(b);
+
+        }
+
+        //利用indexOf找到第一个就返回参数的特性
+        {
+            Array.prototype.distinct = function() {
+                var arr = this,
+                    i,
+                    obj = {},
+                    result = [],
+                    len = arr.length;
+                arr.map((item, index) => {
+                    var bool = arr.indexOf(item, index + 1);
+                    if (bool === -1) {
+                        result.push(item)
+                    };
+                });
+                return result;
+            }
+            let arr = [11, 22, 33, 33, 22, 11, 33];
+            let b = arr.distinct();
+            console.log(b);
+        }
+        //利用es6中的新特性 Set和拓展运算符也可以
+        {
+            let arr = [11, 22, 33, 33, 22, 11, 33];
+            let b = new Set(arr);
+            let c = Array.from(b);
+            let d = [...new Set(arr)]
+            console.log(b);
+            console.log(c);
+            console.log(d);
+        }
+    </script>
+</body>
+
+</html>

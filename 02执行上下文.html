@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 变量对象：储存了在上下文中定义的变量和函数声明。
+
+        // 全局上下文
+        function restart() {
+            console.log('this is a test');
+        };
+        console.log(this.restart);
+        // 全局上下文中的变量对象就是全局对象呐!
+
+        // 函数上下文
+        // 函数上下文中我们使用活动对象来表示变量对象，因为只用当进入此上下文时，该边梁对象才可以使用。所以活动对象其实是进入函数上下文时才被创建的。
+
+
+        // 思考题
+        {
+            function bar() {
+                a = 0; //全局声明，隐式声明为全局变量即使是在函数中。
+                console.log(a);
+            }
+            bar(); //
+            console.log(a);
+
+            function bar2() {
+                console.log(a);
+                a = 0;
+            }
+            bar2() //
+        }
+    </script>
+</body>
+
+</html>
